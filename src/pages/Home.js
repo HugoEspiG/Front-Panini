@@ -1,4 +1,3 @@
-import ItemListContainer from "../components/Items/ItemListContainer";
 import NavBar from "../components/NavBar";
 
 export default function Home(){
@@ -9,7 +8,7 @@ export default function Home(){
                 <NavBar/>
             </header>
             <div className="container">
-                <ItemListContainer/>
+                <h2>Este es el Home</h2>
             </div>
         </div>
     )

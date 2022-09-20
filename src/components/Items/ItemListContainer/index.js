@@ -1,29 +1,28 @@
 
 import Data from "../../Data"
 import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom";
 import ItemList from "../ItemList";
-
+import { backendApi } from "../../../api/backendApi";
 
 const ItemListContainer = () => {
-    const getFetch = new Promise((res, rej) => {
-        if (Data) {
-            res(Data)
-        } else {
-            rej(console.log("No hay datos"))
-        }
-    })
-
     const [data, setData] = useState([])
+    const { equipo } = useParams();
 
     useEffect(() => {
-        getFetch.then((resp) => setData(resp))
-            .catch(err => console.log(err))
-            .finally(() => console.log("datos traidos"))
-    }, [])
+        async function loadData() {
+
+            const resp = await backendApi.getItems(equipo);
+            // const jsonParsed = await response.json()
+            // setData(jsonParsed.data)
+            setData(resp);
+        }
+        loadData();
+    }, [equipo])
 
     return (
         <div>
-            <ItemList data={data}/>
+            <ItemList data={data} />
         </div>
     );
 };

@@ -2,9 +2,9 @@ import Item from "../Item";
 
 const ItemList = (props) => {
     return (
-        <div class="row">
+        <div className="row">
         {props.data.map(cerv=>
-        <div class="col " align="center">
+        <div key={cerv.id} className="col" align="center">
             <Item id={cerv.id} nombre={cerv.nombre} pais={cerv.pais} img={cerv.img} lamina={cerv.n_lamina}/>
         </div>)
         }
