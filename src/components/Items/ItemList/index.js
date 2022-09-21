@@ -1,15 +1,29 @@
+import { useState } from "react";
 import Item from "../Item";
+import ItemSinLamina from "../ItemSinLamina";
 
 const ItemList = (props) => {
+
+    const [cerv, setCerv] = useState({})
+
     return (
         <div className="row">
-        {props.data.map(cerv=>
-        <div key={cerv.id} className="col" align="center">
-            <Item id={cerv.id} nombre={cerv.nombre} pais={cerv.pais} img={cerv.img} lamina={cerv.n_lamina}/>
-        </div>)
-        }
-    </div>  
-    );
-};
+            {
+                props.dataTot.map(jug =>
+                    < div key={jug.id} className="col" align="center" >
+                        {
+                            props.data.filter(elemento => elemento.id === jug.id).length?
+                            <Item>
+                                {props.data.find(elemento=>elemento.id===jug.id)}
+                            </Item>
+                            :
+                            <ItemSinLamina data={jug}/>
+                        }
+                    </div>
+                )
+            }
+        </div >
+    )
+}
 
 export default ItemList;

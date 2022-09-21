@@ -1,28 +1,45 @@
-
-import Data from "../../Data"
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ItemList from "../ItemList";
-import { backendApi } from "../../../api/backendApi";
+import { laminasTot } from "../../../api/laminasTot";
+import { laminasUser } from "../../../api/laminasUser";
 
 const ItemListContainer = () => {
     const [data, setData] = useState([])
+    const [dataTot, setDataTot] = useState([])
     const { equipo } = useParams();
+    const navigateFn = useNavigate();
+
+    const loadPrev = () => {
+        navigateFn(`/${data.previus}`)
+    }
+    const loadNext = () => {
+        navigateFn(`/${equipo}`)
+    }
 
     useEffect(() => {
         async function loadData() {
 
-            const resp = await backendApi.getItems(equipo);
+            const resp = await laminasUser.getItems(equipo);
+            const respTot = await laminasTot.getItems(equipo);
             // const jsonParsed = await response.json()
             // setData(jsonParsed.data)
             setData(resp);
+            setDataTot(respTot);
         }
         loadData();
     }, [equipo])
 
     return (
         <div>
-            <ItemList data={data} />
+            {
+                dataTot.map(cerv =>
+                    <ItemList key={cerv.id} data={data} dataTot={cerv.jugadores} />
+                )
+            }
+
+            <button></button>
+            <button></button>
         </div>
     );
 };

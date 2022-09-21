@@ -1,6 +1,6 @@
-import Data from "../components/Data"
+import Data from "../components/Datas/Data2"
 
-export class backendApi {
+export class laminasTot {
 
     // Metodos para cuando este server backend
 
@@ -39,7 +39,6 @@ export class backendApi {
         } else {
             ItemsCategory = Data
         }
-        console.log(ItemsCategory)
         return ItemsCategory
     }
 
