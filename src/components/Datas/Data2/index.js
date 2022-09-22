@@ -57,6 +57,29 @@ const Data = [
                 n_lamina: 31
             }
         ]
+    },
+    {
+        id:3,
+        equipo: "España",
+        jugadores: [
+            {
+                id: 11,
+                nombre: "Gerard Pique",
+                n_lamina: 28
+            }, {
+                id: 12,
+                nombre: "Nose mas jugadores",
+                n_lamina: 29
+            }, {
+                id: 13,
+                nombre: "Nose mas jugadores",
+                n_lamina: 30
+            }, {
+                id: 14,
+                nombre: "Nose mas jugadores",
+                n_lamina: 31
+            }
+        ]
     }
 ]
 

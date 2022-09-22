@@ -1,5 +1,5 @@
 .tam{
-    width: 300px;
+    width: 200px;
     margin: 5% 3%;
 }
 .estilos {
@@ -11,7 +11,7 @@
 }
 
 .itemImg{
-    height: 350px;
+    height: 250px;
     object-fit: fill;
     background-size: cover;
     box-shadow: 3px 5px 5px rgba(3, 32, 51, .8);
