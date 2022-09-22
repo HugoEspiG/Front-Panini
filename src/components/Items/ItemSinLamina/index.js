@@ -1,13 +1,13 @@
 import React from 'react';
+import './ItemSinLamina.css'
 
 const ItemSinLamina = (props) => {
     return (
         <div>
-            <div className="card tam">
-                <img src={props.data.img} className="card-img itemImg" alt="" />
-                <div className="card-img-overlay content">
-                    <div className="center">{props.data.nombre}</div>
-                    <div className="center">{props.data.n_lamina}</div>
+            <div className="tamIsL card">
+                <div className="card-body centerIS">
+                    <h5 className="card-title">{props.data.id}</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">{props.data.nombre}</h6>
                 </div>
             </div>
         </div>
