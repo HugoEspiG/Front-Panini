@@ -19,9 +19,9 @@ export default function NavBar() {
                                 <NavLink to={"/Argentina"} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Album</NavLink>
                             </li>
                         </ul>
-                        <span className="navbar-text">
-                            Navbar text with an inline element
-                        </span>
+                        <div className="nav-item">
+                            <NavLink to={"/login"} className="bi bi-person-circle text-white"></NavLink>
+                        </div>
                     </div>
                 </div>
             </nav>

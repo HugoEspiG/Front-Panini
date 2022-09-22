@@ -1,10 +1,7 @@
-import { useState } from "react";
 import Item from "../Item";
 import ItemSinLamina from "../ItemSinLamina";
 
 const ItemList = (props) => {
-
-    const [cerv, setCerv] = useState({})
 
     return (
         <div className="row">

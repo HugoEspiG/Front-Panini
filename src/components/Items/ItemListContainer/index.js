@@ -5,13 +5,13 @@ import { laminasTot } from "../../../api/laminasTot";
 import { laminasUser } from "../../../api/laminasUser";
 
 const ItemListContainer = () => {
-    const equipos=["Argentina","Portugal","España"]
+    const equipos = ["Argentina", "Portugal", "España"]
     const [data, setData] = useState([])
     const [dataTot, setDataTot] = useState([])
     const [pos, setPos] = useState(0);
     const { equipo } = useParams();
     const navigateFn = useNavigate();
-    const cargar = ()=>{
+    const cargar = () => {
         navigateFn(`/${equipos[pos]}`)
     }
     useEffect(() => {
@@ -27,9 +27,9 @@ const ItemListContainer = () => {
         loadData();
     }, [equipo])
 
-    useEffect(()=>{
+    useEffect(() => {
         cargar()
-    },[pos])
+    }, [pos])
 
     return (
         <div>
@@ -38,8 +38,9 @@ const ItemListContainer = () => {
                     <ItemList key={cerv.id} data={data} dataTot={cerv.jugadores} />
                 )
             }
-            <button onClick={()=>{pos>0?setPos(pos-1):setPos(pos)}}>Izquie</button>
-            <button onClick={()=>{pos<equipos.length-1?setPos(pos+1):setPos(pos)}}> Dere</button>
+            <button onClick={() => { pos > 0 ? setPos(pos - 1) : setPos(pos) }}>Izquie</button>
+            <i class="bi bi-person-circle"></i>
+            <button onClick={() => { pos < equipos.length - 1 ? setPos(pos + 1) : setPos(pos) }}> Dere</button>
         </div>
     );
 };

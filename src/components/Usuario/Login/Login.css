@@ -1,0 +1,14 @@
+.sizing{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+ }
+
+.sizeImg{
+    margin-top: 4%;
+    margin-bottom: 4%;
+    height: 100px;
+    object-fit: fill;
+    background-size: cover;       
+}
