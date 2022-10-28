@@ -1,18 +1,9 @@
-import Data from "../components/Datas/Data2"
+import Data from "../components/Datas/Data3"
 
-export class laminasTot {
+export class User {
 
     // Metodos para cuando este server backend
 
-    // Para GET(pedir datos)
-    // fetch('url',
-    //     {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-type': 'aplication.json',
-
-    //         }
-    //     })
 
     // Para Post(enviar datos)
     // fetch('url',
@@ -33,11 +24,22 @@ export class laminasTot {
 
     static getItems(equipo) {
 
+        //Para GET(pedir datos)
+        // return fetch('http://localhost:8080/panini/NewServlet',
+        //     {
+        //         method: 'GET',
+        //         equipo:equipo,
+        //         headers: {
+        //             'Content-type': 'aplication/json',
+        //         }
+        //     }) 
+
+
         var ItemsCategory
         if (equipo) {
-            ItemsCategory = Data.filter(function (elemento) { return elemento.equipo === equipo })
+            ItemsCategory = Data.monas.filter(function (elemento) { return elemento.equipo === equipo })
         } else {
-            ItemsCategory = Data
+            ItemsCategory = Data.monas
         }
         return ItemsCategory
     }

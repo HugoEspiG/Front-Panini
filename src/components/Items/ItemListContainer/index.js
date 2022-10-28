@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import ItemList from "../ItemList";
 import { laminasTot } from "../../../api/laminasTot";
-import { laminasUser } from "../../../api/laminasUser";
+import { User } from "../../../api/User";
 
 const ItemListContainer = () => {
     const equipos = ["Argentina", "Portugal", "España"]
@@ -17,11 +17,12 @@ const ItemListContainer = () => {
     useEffect(() => {
         async function loadData() {
 
-            const resp = await laminasUser.getItems(equipo);
+            const resp = await User.getItems(equipo);
             const respTot = await laminasTot.getItems(equipo);
-            // const jsonParsed = await response.json()
-            // setData(jsonParsed.data)
-            setData(resp);
+            console.log(resp)
+//            const jsonParsed = await resp.json()
+             setData(resp)
+//            console.log(jsonParsed)
             setDataTot(respTot);
         }
         loadData();
@@ -39,7 +40,6 @@ const ItemListContainer = () => {
                 )
             }
             <button onClick={() => { pos > 0 ? setPos(pos - 1) : setPos(pos) }}>Izquie</button>
-            <i class="bi bi-person-circle"></i>
             <button onClick={() => { pos < equipos.length - 1 ? setPos(pos + 1) : setPos(pos) }}> Dere</button>
         </div>
     );

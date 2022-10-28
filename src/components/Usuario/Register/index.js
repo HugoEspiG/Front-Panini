@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import "./Register.css"
+import { envioDatos } from '../../../api/envioDatos';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -9,7 +10,10 @@ const Register = () => {
 
     const customSubmit = (data) => {
         (data.email == data.email2) ?
-            console.log(data) : alert("El email no coinciden con la confirmacion")
+        envioDatos.register(data)
+        : alert("El email no coinciden con la confirmacion")
+
+        
     }
     return (
         <>

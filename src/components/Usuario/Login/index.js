@@ -1,14 +1,25 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
+import { envioDatos } from "../../../api/envioDatos";
 import "./Login.css"
+import { useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 
 export default function Login() {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
     const navigateFn = useNavigate();
+    const { addUser } = useContext(UserContext)
 
     const customSubmit = (data) => {
-        console.log(data)
+        const userInfo=envioDatos.Login(data)
+        if (userInfo) {
+            addUser(userInfo)
+            navigateFn("/Home")
+        }
+        else {
+            alert("Usuario o email incorrectos")
+        }
     }
     return (
         <>
@@ -39,7 +50,9 @@ export default function Login() {
                 <div align="col-12">
                     <button className="btn btn-dark" type="submit">Loguearse</button>
                 </div>
-                <NavLink to='/register'></NavLink>
+                <p>
+                    No estas registrado? <NavLink to='/register'>Registrate</NavLink>
+                </p>
             </form>
         </>
     )

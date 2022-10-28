@@ -1,4 +1,5 @@
 import NavBar from "../components/NavBar";
+import User from "../components/Usuario/User";
 
 export default function Home(){
 
@@ -8,7 +9,7 @@ export default function Home(){
                 <NavBar/>
             </header>
             <div className="container">
-                <h2>Este es el Home</h2>
+                <User/>
             </div>
         </div>
     )

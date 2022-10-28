@@ -1,0 +1,28 @@
+.img-tam-user{
+    width: 90%;
+    height: 90%;
+    margin-right: 0.5%;
+    margin-bottom: 2%;
+}
+
+.estilos{
+    margin: 2%;
+    height: 90%;
+}
+
+.estilo-nombre{
+    text-align: start;
+    align-content: start;
+    margin-left: 0.5%;
+}
+
+.pruebas{
+    border-color: red;
+    border-width: 2px;
+    border-style: dashed;
+}
+
+.tam-user{
+    width: 90%;
+    height: 90%;
+}

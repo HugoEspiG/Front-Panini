@@ -13,14 +13,14 @@ export default function NavBar() {
                     <div className="collapse navbar-collapse" id="navbarText">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink to={"/"} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Home</NavLink>
+                                <NavLink to={"/Home"} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Home</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to={"/Argentina"} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Album</NavLink>
                             </li>
                         </ul>
                         <div className="nav-item">
-                            <NavLink to={"/login"} className="bi bi-person-circle text-white"></NavLink>
+                            <NavLink to={"/Home"} className="bi bi-person-circle text-white"></NavLink>
                         </div>
                     </div>
                 </div>
