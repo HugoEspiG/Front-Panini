@@ -1,5 +1,6 @@
 import Item from "../Item";
 import ItemSinLamina from "../ItemSinLamina";
+import React from "react";
 
 const ItemList = (props) => {
 

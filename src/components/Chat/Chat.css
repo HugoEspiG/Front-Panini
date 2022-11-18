@@ -11,6 +11,12 @@
     margin: 1%;
 }
 
+.env{
+    position: absolute;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
 .prueba{
     border-color: red;
     border-width: 2px;

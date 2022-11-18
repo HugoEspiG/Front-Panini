@@ -1,5 +1,6 @@
 import NavBar from "../components/NavBar";
 import User from "../components/Usuario/User";
+import React from "react";
 
 export default function Home(){
 

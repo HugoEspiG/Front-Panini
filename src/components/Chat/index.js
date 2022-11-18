@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from '../../context/UserContext';
 import { useForm } from "react-hook-form"
@@ -7,23 +7,43 @@ import "./Chat.css"
 const Chat = () => {
 
     const { userData } = useContext(UserContext)
+    const [mensaje, setMensaje] = useState({type: 0, text :""})
+    const [mensajes, setMensajes] = useState([])
     const { register, handleSubmit } = useForm()
     const navigateFn = useNavigate();
 
-    const customSubmit = (data) => {
+    useEffect(() => {
+        setMensajes([...mensajes, mensaje])
+    }, [mensaje])
 
+
+    const customSubmit = (data) => {
+        setMensaje(
+            {
+                type: 1,
+                text: data
+            })
     }
 
     return (
         <div>
-            <div class="row g-0 est">
-                <div class="col-sm-6 col-md-2">
+            <div className="row g-0 est">
+                <div className="col-sm-6 col-md-2">
                     <img src={userData.img} alt='' className='img-tam-user rounded float-start'></img>
                 </div>
-                <div class="col-6 col-md-8 border border-dark"></div>
+                <div className="col-6 col-md-8 border border-dark">
+                    {mensajes.map((e, i) => (
+                        <div className='prueba' align='end'>
+                            {console.log(e.text.text)}
+                            <label key={i} className="text-bg-primary rounded">{e.text.text}</label>
+                        </div>
+                    )
+                    )}
+                </div>
             </div>
-            <div class="row g-0 ">
-                <div class="col-sm-6 col-md-1">
+
+            <div className="row g-0 ">
+                <div className="col-sm-6 col-md-1">
                     <img src={userData.img} alt='' className='img-tam-user rounded float-start'></img>
                 </div>
                 <div className="col-sm-6 col-md-8">

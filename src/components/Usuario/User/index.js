@@ -19,7 +19,7 @@ const User = () => {
               <span className="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul className="dropdown-menu">
-              {userData.monas.map(cerv => <li>{cerv.n_lamina}</li>)}
+              {userData.monas.map((cerv,i) => <li key={i}>{cerv.n_lamina}</li>)}
             </ul>
           </div>
           <div className="btn-group estilo-nombre">
