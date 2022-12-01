@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { resolvePath, useNavigate } from 'react-router-dom';
 import "./Register.css"
 import { envioDatos } from '../../../api/envioDatos';
 
@@ -9,12 +9,28 @@ const Register = () => {
     const navigateFn = useNavigate();
 
     const customSubmit = (data) => {
-        (data.email == data.email2) ?
-        envioDatos.register(data)
-        : alert("El email no coinciden con la confirmacion")
-
-        
+        if (data.email === data.email2) {
+            async function datos() {
+                try {
+                    const resp = await envioDatos.Register(data)
+                    const parseJson = await resp.json();
+                    console.log(parseJson);
+                    if (resp.ok) {
+                        alert("Registrado con exito")
+                        navigateFn('/')
+                    } else {
+                        alert("Fallo en el registro")
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            datos();
+        } else {
+            alert("El email no coinciden con la confirmacion")
+        }
     }
+
     return (
         <>
             <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0l2XCONKBWIAkcc6P2AmT2li1FyGNJBUMLQ&usqp=CAU' className='rounded mx-auto d-block sizeImg rounded-pill' alt=""></img>

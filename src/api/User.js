@@ -21,6 +21,16 @@ export class User {
     // PUT(cambiar datos)
     // DELETE(eliminar datos)
 
+    static getItemsTot(equipo){
+            return fetch(`http://localhost:8085/api/Mona/all`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    bodyType: 'json'
+                })
+    }
 
     static getItems(equipo) {
 

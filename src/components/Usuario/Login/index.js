@@ -13,14 +13,22 @@ export default function Login() {
     const { addUser } = useContext(UserContext)
 
     const customSubmit = (data) => {
-        const userInfo=envioDatos.Login(data)
-        if (userInfo) {
-            addUser(userInfo)
-            navigateFn("/Home")
+        async function verify(){
+            try{
+                const resp= await envioDatos.Login(data)
+                const parseJson= await resp.json() 
+                if (parseJson) {
+                    addUser(parseJson)
+                    navigateFn("/Home")
+                }
+                else {
+                    alert("Usuario o email incorrectos")
+                }
+            }catch(error){
+                console.log(error);
+            }
         }
-        else {
-            alert("Usuario o email incorrectos")
-        }
+        verify();
     }
     return (
         <>
