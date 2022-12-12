@@ -1,11 +1,12 @@
-import React,{useState, useEffect } from "react"
+import React,{useState, useEffect, useContext } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import ItemList from "../ItemList";
-import { laminasTot } from "../../../api/laminasTot";
 import { User } from "../../../api/User";
+import { UserContext } from "../../../context/UserContext";
 
 const ItemListContainer = () => {
-    const equipos = ["Argentina", "Portugal", "España"]
+    const equipos = ["ALEMANIA","AUSTRALIA","BRASIL","BELGICA","CAMERUN","CANADA","COSTA RICA","CROACIA","DINAMARCA","ESPAÑA","FRANCIA","JAPON","MARRUECOS","SERBIA","SUIZA","TUNEZ"]
+    const {userData} = useContext(UserContext)
     const [data, setData] = useState([])
     const [dataTot, setDataTot] = useState([])
     const [pos, setPos] = useState(0);
@@ -16,14 +17,11 @@ const ItemListContainer = () => {
     }
     useEffect(() => {
         async function loadData() {
-
-            const resp = await User.getItems(equipo);
-            const respTot = await laminasTot.getItems(equipo);
-            console.log(resp)
-//            const jsonParsed = await resp.json()
-             setData(resp)
-//            console.log(jsonParsed)
-            setDataTot(respTot);
+            const resp = userData.monas
+            const respTot = await User.getItemsTot(equipo);
+            const jsonParsedTot = await respTot.json()
+            setData(resp)
+            setDataTot(jsonParsedTot);
         }
         loadData();
     }, [equipo])
@@ -34,13 +32,12 @@ const ItemListContainer = () => {
 
     return (
         <div>
+            {console.log(data)}
             {
-                dataTot.map(cerv =>
-                    <ItemList key={cerv.id} data={data} dataTot={cerv.jugadores} />
-                )
+                    <ItemList data={data} dataTot={dataTot} />
             }
-            <button onClick={() => { pos > 0 ? setPos(pos - 1) : setPos(pos) }}>Izquie</button>
-            <button onClick={() => { pos < equipos.length - 1 ? setPos(pos + 1) : setPos(pos) }}> Dere</button>
+            <button onClick={() => { pos > 0 ? setPos(pos - 1) : setPos(pos) }} className='btn btn-outline-dark btn-sm border bi bi-arrow-left-circle-fill'></button>
+            <button onClick={() => { pos < equipos.length - 1 ? setPos(pos + 1) : setPos(pos) }} className='btn btn-outline-dark btn-sm border bi bi-arrow-right-circle-fill'> </button>
         </div>
     );
 };

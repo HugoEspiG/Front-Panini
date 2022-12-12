@@ -37,46 +37,44 @@ export class envioDatos {
     }
 
     static Login(data) {
-        console.log(data)
-        fetch('http://localhost:8085/api/User/login',
+        const user={
+            mail:data.email,
+            password:data.password
+        }
+        return fetch('http://localhost:8085/api/User/login',
             {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
                 },
-                body: {
-                    mail: data.email,
-                    password: data.password,
-                },
+                body:JSON.stringify(user),
                 bodyType: 'json'
             })
-        // let user
-        // if (Data.usuario===data.email&&Data.pwd===data.password) {
-        //     user = Data
-        // } else {
-        //     user = false
-        // }
-        // return user
+
     }
 
     static actualizarMonas(data) {
-        // Para PUT(enviar datos)
-        // fetch('url',
-        //     {
-        //         method: 'PUT',
-        //         headers: {
-        //             'Content-type': 'aplication.json',
-
-        //         }
-        //         body:JSON.stringify({
-
-        //         })
-        //     })
-        Data.monas.push(data)
+        fetch('http://localhost:8085/api/User/update',
+            {
+                method: 'PUT',
+                headers: {
+                    'Content-type': 'aplication.json',
+                },
+                body:JSON.stringify(data),
+                bodyType:'json'
+            })
     }
 
     static actualizarAmigos(data) {
-        Data.push(data)
+        return fetch('http://localhost:8085/api/User/update',
+        {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body:JSON.stringify(data),
+            bodyType: 'json'
+        })
     }
 
     static enviarMsg(msg, friend) {

@@ -15,8 +15,9 @@ export default function Login() {
     const customSubmit = (data) => {
         async function verify(){
             try{
-                const resp= await envioDatos.Login(data)
-                const parseJson= await resp.json() 
+                const resp = await envioDatos.Login(data)
+                const parseJson = await resp.json();
+                console.log(parseJson)
                 if (parseJson) {
                     addUser(parseJson)
                     navigateFn("/Home")

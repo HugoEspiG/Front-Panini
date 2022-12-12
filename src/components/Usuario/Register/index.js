@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { resolvePath, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "./Register.css"
 import { envioDatos } from '../../../api/envioDatos';
 
